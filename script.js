@@ -143,7 +143,16 @@ subcatButtons.addEventListener('click', e=>{
   const btn = e.target.closest('button[data-sub]');
   if(!btn) return;
   const sub = btn.dataset.sub;
-  const key = `${sub}_${currentType}`; // e.g. gold_earrings
+  const folderMap = {
+  gold_earrings: "trymygold/gold_earrings",
+  diamond_earrings: "trymygold/diamond_earrings",
+  gold_necklaces: "trymygold/gold_chains",
+  diamond_necklaces: "trymygold/diamond_chains"
+};
+
+const folderKey = folderMap[`${sub}_${currentType}`];
+insertJewelryOptions(folderKey);
+
   optionsGroup.style.display = 'flex';
   insertJewelryOptions(key);
 });
